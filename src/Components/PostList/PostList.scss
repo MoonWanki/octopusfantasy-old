@@ -1,0 +1,13 @@
+@import '~include-media/dist/include-media';
+
+#post-list {
+    position: relative;
+    width: 1200px;
+    left: 50%;
+    padding: 0 30px;
+    transform: translateX(-50%);
+
+    @include media("<1200px") {
+        width: 100%;
+    }
+}

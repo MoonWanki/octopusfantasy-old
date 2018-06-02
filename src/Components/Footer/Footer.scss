@@ -1,0 +1,13 @@
+#footer-container {
+    border-top: 1px solid #eaeaea;
+    background-color: #f9f9f9;
+    height: 250px;
+    width: 100%;
+
+    #footer-inner {
+        position: relative;
+        width: 1200px;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+}
