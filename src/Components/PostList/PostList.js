@@ -12,11 +12,12 @@ class PostList extends Component {
         return postList.map((post)=>(
             <Post
                 key={key++}
-                title={post.get('title')}
-                postedOn={post.get('postedOn')}
-                content={post.get('content')}
-                likes={post.get('likes')}
-                comments={post.get('comments')}
+                title={post.title}
+                postedOn={post.postedOn}
+                video={post.video}
+                content={post.content}
+                likes={post.likes}
+                comments={post.comments}
             />
         ))
     }

@@ -49,11 +49,7 @@ class NavContainer extends Component {
     handleMouseLeaveNav = (name) => {
         console.log(name + " nav leave");
 
-        if(this.state.inDropdown===true) {
-            const { HeaderActions } = this.props;
-            HeaderActions.disableTransparency();
-
-        } else {
+        if(this.state.inDropdown===false) {
             this.setState({ activeNav: this.setDefaultNavActive(), activeDropdown: null, inDropdown: false });
         }
   
@@ -61,6 +57,8 @@ class NavContainer extends Component {
 
     handleMouseEnterDropdown = (name) => {
         console.log(name + " dropdown enter");
+        const { HeaderActions } = this.props;
+        HeaderActions.disableTransparency();
         this.setState({ inDropdown: true });
     }
 
@@ -69,6 +67,11 @@ class NavContainer extends Component {
         const { HeaderActions } = this.props;
         HeaderActions.enableTransparency(); 
         this.setState({ activeNav: this.setDefaultNavActive(), activeDropdown: null, inDropdown: false });
+    }
+
+    shouldComponentUpdate(nextProps, nextState) {
+        if(this.state.inDropdown===false && nextState.inDropdown===true) return false;
+        return true;
     }
 
     render() {

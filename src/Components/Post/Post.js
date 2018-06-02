@@ -5,13 +5,13 @@ class Post extends Component {
 
     render() {
 
-        const { title, postedOn, content, likes, comments } = this.props;
+        const { title, postedOn, video, text, likes, comments } = this.props;
 
         return (
 
             <div>
                 <PostHeader title={title} postedOn={postedOn.toString()} />
-                <PostContent content={content} />
+                <PostContent video={video} text={text} />
                 <PostFooter likes={likes} comments={comments} />
             </div>
         );

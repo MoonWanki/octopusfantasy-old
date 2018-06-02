@@ -5,7 +5,7 @@ import NavContainer from './NavContainer';
 import styled from 'styled-components';
 import NavDropdown from './NavDropdown';
 
-const HeaderWrapper = styled.div`
+const HeaderTitle = styled.div`
 
     height: 80px;
     position: fixed;
@@ -25,14 +25,14 @@ const Header = ({ transparency }) => {
 
     return (
         <div>
-            <HeaderWrapper transparency={transparency}>
+            <HeaderTitle transparency={transparency}>
                 <div id="header-inner">
                     <Link to="/">
                         <div id="logo-container" />
                     </Link>
                     <NavContainer transparency={transparency} />
                 </div>
-            </HeaderWrapper>
+            </HeaderTitle>
             
         </div>
     )

@@ -2,7 +2,7 @@ import React from 'react';
 import './ContentBanner.scss';
 
 
-const ContentBanner = ({ contentType }) => {
+const ContentBanner = ({ postType }) => {
 
     return (
         <div id='content-banner-container'>

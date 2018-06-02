@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import { ContentBanner, PostList } from 'Components';
-import * as util from 'util/content';
+import * as postUtil from 'util/post';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as contentsActions from 'store/modules/contents';
 
 const mapStateToProps = (state) => ({
+    postType: state.contents.postType,
+    postNum: state.contents.postNum,
     postList: state.contents.postList
 });
 
@@ -15,39 +17,29 @@ const mapDispatchToProps = (dispatch) => ({
 
 class ContentsContainer extends Component {
 
-    constructor(props) {
-        super(props);
-        this.state = {
-            contentType: ''
-        }
-    }
-
-    static getDerivedStateFromProps(nextProps, prevState) {
-        const type = nextProps.match.params.contenttype;
-        if(type !== prevState.contentType) return {type: type}
-        else return null;
-    }
-
-    loadContent = async (contentId) => {
-        const post = await util.getPost(1);
-        console.log(post);
-        const comments = await util.getComments(1);
-        console.log(comments);
+    fetchNextPost = async () => {
+        const { postType, postNum, ContentsActions } = this.props;
+        const newPost = await postUtil.loadNextPost(postType, postNum)
+        console.log(newPost);
+        ContentsActions.fetchPost(newPost);
     }
 
     componentDidMount() {
-
+        // 임시
+        const { ContentsActions } = this.props;
+        ContentsActions.setPostType("daigasso");
     }
 
     render() {
 
-        const { contentType } = this.state;
-        const { postList } = this.props;
+        const { postType, postList } = this.props;
+        const { fetchNextPost } = this;
 
         return (
             <div>
-                <ContentBanner contentType={contentType} />
-                <PostList postList={postList}/>
+                <ContentBanner postType={postType} />
+                <button onClick={fetchNextPost} />
+                <PostList postList={postList} />
             </div>
         );
     }

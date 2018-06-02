@@ -1,8 +1,10 @@
 import React from 'react';
 
-const PostContent = ({ content }) => {
+const PostContent = ({ video, text }) => {
     return (
-        <div dangerouslySetInnerHTML={{ __html: content }} >
+        <div>
+            
+            <div dangerouslySetInnerHTML={{ __html: text }} />
         </div>
     );
 };
