@@ -1,8 +1,10 @@
 #footer-container {
+    position: absolute;
     border-top: 1px solid #eaeaea;
     background-color: #f9f9f9;
     height: 250px;
     width: 100%;
+    bottom: 0;
 
     #footer-inner {
         position: relative;

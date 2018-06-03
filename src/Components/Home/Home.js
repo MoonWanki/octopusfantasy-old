@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { SlickSlider } from 'Components';
+import { Footer, SlickSlider } from 'Components';
 import './Home.scss';
 
 class Home extends Component {
@@ -13,6 +13,7 @@ class Home extends Component {
                 </div>
                 
 
+                <Footer />
             </div>
         );
     }

@@ -10,7 +10,7 @@ class Post extends Component {
         return (
 
             <div>
-                <PostHeader title={title} postedOn={postedOn.toString()} />
+                <PostHeader title={title} postedOn={postedOn} />
                 <PostContent video={video} text={text} />
                 <PostFooter likes={likes} comments={comments} />
             </div>

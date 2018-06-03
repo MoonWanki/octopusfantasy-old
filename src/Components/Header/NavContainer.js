@@ -40,15 +40,10 @@ class NavContainer extends Component {
     }
 
     handleMouseEnterNav = (name) => {
-        console.log(name + " nav enter");
-        // const { HeaderActions } = this.props;
-        // HeaderActions.disableTransparency();
         this.setState({ activeNav: name, activeDropdown: name==="ABOUT"?null:name });
     }
 
     handleMouseLeaveNav = (name) => {
-        console.log(name + " nav leave");
-
         if(this.state.inDropdown===false) {
             this.setState({ activeNav: this.setDefaultNavActive(), activeDropdown: null, inDropdown: false });
         }
@@ -56,14 +51,12 @@ class NavContainer extends Component {
     }
 
     handleMouseEnterDropdown = (name) => {
-        console.log(name + " dropdown enter");
         const { HeaderActions } = this.props;
         HeaderActions.disableTransparency();
         this.setState({ inDropdown: true });
     }
 
     handleMouseLeaveDropdown = (name) => {
-        console.log(name + " dropdown leave");       
         const { HeaderActions } = this.props;
         HeaderActions.enableTransparency(); 
         this.setState({ activeNav: this.setDefaultNavActive(), activeDropdown: null, inDropdown: false });

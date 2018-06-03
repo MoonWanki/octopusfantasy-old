@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { CommentList } from 'Components';
+import { CommentBoxList } from 'Components';
 
 class PostFooter extends Component {
     render() {
@@ -8,8 +8,8 @@ class PostFooter extends Component {
 
         return (
             <div>
-                <p>좋아요: {likes.size}개</p>
-                <CommentList comments={comments} />
+                <p>좋아요: {likes.length}개</p>
+                <CommentBoxList comments={comments} />
         </div>
         );
     }

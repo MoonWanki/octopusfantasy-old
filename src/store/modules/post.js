@@ -1,36 +1,31 @@
 import { createAction, handleActions } from 'redux-actions';
 
 const initialState = {
-    postType: null,
-    postNum: 0,
     postList: []
 };
 
-const SET_POST_TYPE = 'contents/SET_POST_TYPE';
+const INIT_POSTS = 'contents/INIT_POSTS';
 const FETCH_POST = 'contents/FETCH_POST';
 
-export const setPostType = createAction(SET_POST_TYPE, type => type);
+export const initPosts = createAction(INIT_POSTS);
 export const fetchPost = createAction(FETCH_POST);
 
 export default handleActions({
-    [SET_POST_TYPE]: (state, { payload: type }) => {
-        return { postType: type, postNum: 0, postList: [] };
+    [INIT_POSTS]: (state) => {
+        return { postList: [] };
     },
     [FETCH_POST]: (state, { payload }) => {
         const newPost = {
             id: payload.id,
             type: payload.type,
             title: payload.title,
-            postedOn: null,
+            postedOn: payload['posted-on'],
             video: payload.video,
             content: payload.content,
             likes: payload.likes,
             comments: payload.comments
         };
-        return {
-            postList: [...state.postList, newPost],
-            postNum: state.postNum + 1
-        }
+        return { postList: [...state.postList, newPost] }
     }
 }, initialState);
 

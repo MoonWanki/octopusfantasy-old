@@ -11,8 +11,6 @@ import {
   AboutContainer
 } from 'Containers';
 
-import { Footer } from 'Components';
-
 class App extends Component {
 
   render() {
@@ -22,11 +20,10 @@ class App extends Component {
           <div onScroll={console.log('스크롤~')}>
             <HeaderContainer />
             <Switch>
-                <Route exact path="/" component={HomeContainer} />
-                <Route path="/about" component={AboutContainer} />
-                <Route path="/:contenttype" component={ContentsContainer} />
+              <Route exact path="/" component={HomeContainer} />
+              <Route path="/about" component={AboutContainer} />
+              <Route path="/:contenttype" component={ContentsContainer} />
             </Switch>
-            <Footer />
           </div>     
         </BrowserRouter>
       </Provider>

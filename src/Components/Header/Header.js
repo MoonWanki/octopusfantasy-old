@@ -16,7 +16,7 @@ const HeaderTitle = styled.div`
     transition-timing-function: ease;
     border-bottom: 1px solid rgba(0, 0, 0, 0.1);
     background-color: ${
-        props=>props.transparency ? 'rgba(0, 0, 0, 0.0)' : 'rgba(255, 255, 255, 1.0)'
+        props=>props.transparency ? 'rgba(0, 0, 0, 0.0)' : 'rgba(255, 255, 255, 0.97)'
     };
 
 `;

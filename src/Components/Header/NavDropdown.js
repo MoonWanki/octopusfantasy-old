@@ -9,15 +9,12 @@ class NavDropdown extends Component {
         const { name, handleMouseEnter } = this.props;
         e.stopPropagation();
         handleMouseEnter(name);
-        console.log("onMouseEnter in dropdown");
     }
 
     onMouseLeave = (e) => {
         const { name, handleMouseLeave } = this.props;
         e.stopPropagation();
         handleMouseLeave(name);
-        console.log("onMouseLeave in dropdown");
-        
     }
 
     renderDropdown = () => {

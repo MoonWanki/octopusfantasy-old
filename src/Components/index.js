@@ -8,6 +8,6 @@ export { default as Post } from './Post/Post';
 export { default as PostHeader } from './PostHeader/PostHeader';
 export { default as PostContent } from './PostContent/PostContent';
 export { default as PostFooter } from './PostFooter/PostFooter';
-export { default as CommentList } from './CommentList/CommentList';
-export { default as Comment } from './Comment/Comment';
+export { default as CommentBoxList } from './CommentBoxList/CommentBoxList';
+export { default as CommentBox } from './CommentBox/CommentBox';
 

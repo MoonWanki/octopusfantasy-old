@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux';
 import header from './header';
-import contents from './contents';
+import post from './post';
 
 export default combineReducers({
-  header, contents
+  header, post
 });
