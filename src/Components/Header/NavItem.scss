@@ -1,11 +1,16 @@
-#nav-item {
+#nav-item-container {
 
     position: relative;
     float: left;
-    padding: 30px 30px;
+    padding: 7px 12px;
     text-align: center;
     height: 100%;
     position: relative;
     $dropdown-height: 0;
     text-decoration: none;
+
+    #nav-item {
+        position: relative;
+        padding: 14px 15px;
+    }
 }

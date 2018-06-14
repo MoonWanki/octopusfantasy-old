@@ -1,0 +1,44 @@
+#post-header {
+    width: 100%;
+    padding: 20px 0;
+
+    #post-header-colorbox {
+        width: 60px;
+        height: 8px;
+        margin: 10px 0;
+        background: #0288D1;
+
+        @media screen and (max-width: 768px) {
+            width: 45px;
+            height: 6px;
+            margin: 8px 0;
+        }
+    }
+
+    #post-header-title {
+        width: 100%;
+        padding: 10px 0;
+
+        @media screen and (max-width: 768px) {
+            padding: 5px 0;
+        }
+        p {
+            font-family: 'NanumSquare', sans-serif;
+            font-weight: 700;
+            font-size: 2.5rem;
+            color: darken(gray, 20);
+
+            @media screen and (max-width: 768px) {
+                font-size: 1.5rem;
+            }
+        }
+    }
+
+    #post-header-postedon {
+        width: 100%;        
+        padding: 4px 0;
+        p {
+            color: gray;
+        }
+    }
+}

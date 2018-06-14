@@ -1,42 +1,51 @@
-import React from 'react';
+import React, { Component } from 'react';
 import './Header.scss';
 import { Link } from 'react-router-dom';
 import NavContainer from './NavContainer';
-import styled from 'styled-components';
-import NavDropdown from './NavDropdown';
+import UserInfo from './UserInfo';
+import whiteLogo from 'images/logo_white.png';
+import blackLogo from 'images/logo_black.png';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import * as headerActions from 'store/modules/header';
 
-const HeaderTitle = styled.div`
 
-    height: 80px;
-    position: fixed;
-    width: 100%;
-    z-index: 100;
-    transition-property: background-color;
-    transition-duration: 0.2s;
-    transition-timing-function: ease;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-    background-color: ${
-        props=>props.transparency ? 'rgba(0, 0, 0, 0.0)' : 'rgba(255, 255, 255, 0.97)'
-    };
+const mapStateToProps = (state) => ({ transparency: state.header.transparency });
+const mapDispatchToProps = (dispatch) => ({
+    HeaderActions: bindActionCreators(headerActions, dispatch)
+});
 
-`;
+class Header extends Component {
 
-const Header = ({ transparency }) => {
+    handleMouseEnter = (e) => {
+        e.stopPropagation();
+        this.props.HeaderActions.setOnHeader(true);
+    }
 
-    return (
-        <div>
-            <HeaderTitle transparency={transparency}>
-                <div id="header-inner">
+    handleMouseLeave = (e) => {
+        e.stopPropagation();
+        this.props.HeaderActions.setOnHeader(false);  
+    }
+
+    render() {
+
+        const { transparency, cookies } = this.props;
+
+        return (
+            <div
+            className={ transparency ? 'header-container transparent' : 'header-container'}
+            onMouseEnter={this.handleMouseEnter}
+            onMouseLeave={this.handleMouseLeave}>
+                <div className="header-inner">
                     <Link to="/">
-                        <div id="logo-container" />
+                        <img src={transparency?whiteLogo:blackLogo} alt="logo"/>
                     </Link>
                     <NavContainer transparency={transparency} />
+                    <UserInfo transparency={transparency} />
                 </div>
-            </HeaderTitle>
-            
-        </div>
-    )
-    
+            </div>
+        )
+    }
 }
 
-export default Header;
+export default connect(mapStateToProps, mapDispatchToProps)(Header);

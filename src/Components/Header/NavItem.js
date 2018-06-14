@@ -1,42 +1,47 @@
 import React, { Component } from 'react';
 import './NavItem.scss';
 import styled from 'styled-components';
+import NavDropdown from './NavDropdown';
 
 
 class NavItem extends Component {
 
-    constructor(props) {
-        super(props);
-        this.state = {
-            active: false
-        }
-    }
-
-    Bold = styled.b`
-        color: ${props=>props.transparency ? 'white' : (props=>props.active ? 'black' : 'gray')}
-        border-bottom: ${props=>props.active ? '3px solid #f6e11d' : 'none'}
+    Bold = styled.p`
+        pointer-events: none;
+        color: ${props=>props.transparency ? 'white' : (props=>props.routed ? 'black' : 'gray')};
+        font-size: 1.1rem;
+        font-weight: 800;
+        border-bottom: ${props=>props.routed ? '2px solid #FFC107' : 'none'};
     `
 
     onMouseEnter = (e) => {
-        const { name, handleMouseEnter } = this.props;
+        const { name, onMouseOver } = this.props;
         e.stopPropagation();
-        handleMouseEnter(name);
+        onMouseOver(name, true);
     }
 
     onMouseLeave = (e) => {
-        const { name, handleMouseLeave } = this.props;
-        e.stopPropagation();
-        handleMouseLeave(name);
+        const { name, onMouseOver } = this.props;
+        //e.stopPropagation();
+        onMouseOver(name, false);
     }
 
     render() {
 
-        const { name, active, transparency } = this.props;
+        const { name, routed, transparency, active, dropdownItems } = this.props;
         const { onMouseEnter, onMouseLeave, Bold } = this;
 
         return (
-            <div id="nav-item" onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave}>
-                <Bold active={active} transparency={transparency}>{name}</Bold>
+            <div
+                id="nav-item-container"
+                style={{ backgroundColor: (active ? '#f9f9f9' : 'inherit') }}>
+                <div id="nav-item" onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave}>
+                    <Bold routed={routed} transparency={transparency}>{name}</Bold>
+                </div>
+                {dropdownItems!==null && active
+                    ? <NavDropdown name={name} items={dropdownItems} onMouseLeave={onMouseLeave} />
+                    : null
+                }
             </div>
           
         );

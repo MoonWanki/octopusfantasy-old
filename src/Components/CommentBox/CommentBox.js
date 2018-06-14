@@ -1,36 +1,75 @@
 import React, { Component } from 'react';
-import Comment from './Comment';
+import { Comment, Form, Button } from 'semantic-ui-react';
+import { CommentGroup } from 'Components';
+import './CommentBox.scss';
 
 class CommentBox extends Component {
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            replyOn: false
+        }
+    }
+
+    getStringDate (rawDate) {
+        const date = new Date(rawDate);
+        const options = {
+            hour12: false,
+            year: "numeric",
+            month: "short",
+            day: "numeric",
+            hour: "2-digit",
+            minute: "2-digit"
+        };
+        return date.toLocaleTimeString("ko-KR", options);
+    }
 
     renderRecomments = () => {
 
         const { recomments } = this.props;
-
-        if(!recomments || recomments.length===0) return;
-
+        console.log('만들쟈');
         let key = 0;
         return recomments.map((curRecomment)=>(
-            <Comment
-                key={key++}
-                id={curRecomment.id}
-                text={curRecomment.comment}
-                date={curRecomment['commented-on']}
-                isRecomment={true}
-             />
+            <CommentGroup key={key++} comments={recomments} isParent={false} />
         ));
 
     }
 
+    toggleReplyOnOff = (e) => {
+        e.stopPropagation();
+        this.setState({ replyOn: !this.state.replyOn});
+    }
+
     render() {
 
-        const { id, commentedOn, comment } = this.props;
-        const { renderRecomments } = this;
+        const { id, commentedOn, comment, recomments } = this.props;
+        const { getStringDate, renderRecomments, toggleReplyOnOff } = this;
+        const { replyOn } = this.state;
 
         return (
-            <div>
-                <Comment id={id} date={commentedOn} text={comment} isRecomment={false}/>
-                {renderRecomments()}
+            <div id='comment-box'> 
+                <Comment>
+                    <Comment.Avatar src='/assets/images/avatar/small/jenny.jpg' />
+                    <Comment.Content>
+                        <Comment.Author as='b'>{id}</Comment.Author>
+                        <Comment.Metadata>{getStringDate(commentedOn)}</Comment.Metadata>
+                        <Comment.Text>{comment}</Comment.Text>
+                        <Comment.Actions>
+                            <Comment.Action><span onClick={toggleReplyOnOff}>답글 달기</span></Comment.Action>
+                        </Comment.Actions>
+                    </Comment.Content>
+                    { recomments!=null && recomments.length>0 ? renderRecomments() : null }
+                    { replyOn ?
+                        (<div style={{paddingBottom: '40px'}}>
+                            <Form>
+                                <Form.TextArea />
+                                <Form.Button content='등로쿠' floated='right' labelPosition='right' icon='edit' primary />
+                            </Form>
+                        </div>
+                        )
+                    : null }
+                </Comment>
             </div>
         );
     }

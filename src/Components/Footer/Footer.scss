@@ -1,15 +1,136 @@
-#footer-container {
-    position: absolute;
+.footer-container {
     border-top: 1px solid #eaeaea;
     background-color: #f9f9f9;
-    height: 250px;
     width: 100%;
-    bottom: 0;
+    padding: 30px 0 50px 0;
 
-    #footer-inner {
+    p {
+        font-family: 'NanumSquare';
+    }
+
+    .footer-inner {
         position: relative;
         width: 1200px;
         left: 50%;
         transform: translateX(-50%);
+        padding: 0 30px;
+        
+        .footer-menu {
+
+            float: left;
+            width: 25%;
+            height: 100%;
+
+            @media screen and (max-width: 768px) {
+                padding: 10px 0;
+                width: 50%;
+            }
+
+            .footer-title {
+                font-size: 1.3rem;
+                color: #7f7f7f;
+                font-weight: 700;
+                margin: 0;
+
+                @media screen and (max-width: 768px) {
+                    font-size: 1rem;
+                }
+            }
+
+            .footer-title-hr {
+                width: 80%;
+                height: 12px;
+                border-top: 1px solid #eaeaea;
+                @media screen and (max-width: 768px) {
+                    height: 5px;
+                }
+            }
+
+            .footer-content {
+                margin: 0;
+                padding: 3px 0;
+                font-size: 1.2rem;
+                color: #9e9e9e;
+
+                @media screen and (max-width: 768px) {
+                    font-size: 0.8rem;
+                }
+
+                &:hover {
+                    color: #474747;
+                }
+            }
+            
+        }
+
+        .powered-by-react {
+
+            width: 50%;
+
+            @media screen and (max-width: 768px) {
+                width: 100%;
+            }
+            
+            .react-box {
+
+                position: relative;
+                left: -15px;
+                margin: 0;
+
+                img {
+                    float: left;
+                    height: 50px;
+                    animation: react-logo-spin infinite 18s linear;
+                    @media screen and (max-width: 768px) {
+                        height: 40px;
+                    }
+                }
+
+                .react {
+                    position: relative;
+                    top: 2px;
+                    left: -8px;
+                    color: black;
+                    font-size: 2.5rem;
+                    font-weight: 700;
+                    @media screen and (max-width: 768px) {
+                        font-size: 2rem;
+                    }
+                }
+            }
+        }
+
+        .copyright {
+            clear: both;
+
+            .copyright-text {
+                font-family: 'NanumGothic';
+                font-size: 0.8rem;
+                color: #9e9e9e;
+                padding: 10px 0;
+
+            }
+        }
     }
+
+    
+    @media screen and (max-width: 1200px) {
+
+        .footer-inner {
+            position: relative;
+            width: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+    }
+
 }
+
+
+@keyframes react-logo-spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+
+  

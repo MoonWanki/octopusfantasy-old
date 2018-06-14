@@ -1,0 +1,22 @@
+.user-info-container {
+    float: right;
+    position: relative;
+    height: 30px;
+    padding-top: 12px;
+    text-align: center;
+    cursor: pointer;
+
+    .user-info-profile-image {
+        float: right;
+    }
+    
+    .user-info-nickname {
+        float: right;
+        font-family: 'NanumSquare';
+        font-size: 1.2rem;
+        margin-top: 10px;
+        margin-left: 4px;
+    }
+
+}
+

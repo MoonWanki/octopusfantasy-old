@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { CommentBoxList } from 'Components';
+import { CommentGroup } from 'Components';
+import { Button, Icon, Label } from 'semantic-ui-react';
 
 class PostFooter extends Component {
     render() {
@@ -7,10 +8,20 @@ class PostFooter extends Component {
         const { likes, comments } = this.props;
 
         return (
-            <div>
-                <p>좋아요: {likes.length}개</p>
-                <CommentBoxList comments={comments} />
-        </div>
+            <div style={{paddingBottom: '100px'}}>
+                <div style={{textAlign: 'center', padding: '30px 0'}} >
+                    <Button as='div' labelPosition='right'>
+                        <Button color='teal'>
+                            <Icon name='thumbs up' />
+                            Like!
+                        </Button>
+                        <Label as='a' basic color='teal' pointing='left'>
+                            {likes.length}
+                        </Label>
+                    </Button>
+                </div>
+                <CommentGroup comments={comments} isParent={true}/>
+            </div>
         );
     }
 }

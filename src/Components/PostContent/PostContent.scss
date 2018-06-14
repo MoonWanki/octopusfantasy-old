@@ -1,5 +1,6 @@
+#post-content {
 
-#video-container-wrapper {
+  #video-container-wrapper {
     position: relative;
   
     #video-container {
@@ -16,3 +17,8 @@
       padding-top: 56.25%;
     }
   }
+
+  p {
+    margin: 0;
+  }
+}

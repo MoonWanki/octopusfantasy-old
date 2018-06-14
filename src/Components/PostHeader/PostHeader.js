@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './PostHeader.scss';
 
 class PostHeader extends Component {
 
@@ -21,9 +22,14 @@ class PostHeader extends Component {
         const { getStringDate } = this;
 
         return (
-            <div>
-                <p>제목:{title}</p>
-                <p>작성일자:{getStringDate(postedOn)}</p>
+            <div id='post-header'>
+                <div id='post-header-colorbox' />
+                <div id='post-header-title'>
+                    <p bold='true'>{title}</p>
+                </div>
+                <div id='post-header-postedon'>
+                    <p>{getStringDate(postedOn)}</p>
+                </div>
             </div>
         );
     }

@@ -1,0 +1,28 @@
+.about-page-wrapper {
+    width: 100vw;
+    height: 90vh;
+    background: url(../../images/aboutbg.jpg) center no-repeat;
+    background-size: cover;
+    text-align: center;
+
+    @media screen and (max-width: 768px) {
+        height: 50vh;
+
+    }
+
+}
+
+
+.about-page-inner {
+    
+    position: relative;
+    color: white;
+    font-family: 'NanumSquare';
+    font-size: 4rem;
+    top: 45%;
+
+    @media screen and (max-width: 768px) {
+        font-size: 2rem;
+    }
+    
+}

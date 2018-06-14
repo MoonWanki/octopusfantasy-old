@@ -1,7 +1,57 @@
-#content-banner-container {
-    top: 50px;
-    padding-top: 100px;
+@import '~include-media/dist/include-media';
+
+.content-banner-container {
+    position: relative;
     width: 100%;
-    height: 360px;
-    background: olivedrab;
+    height: 480px;
+    background-position: center;
+    background-size: cover;
+    overflow: hidden;
+
+    @include media("<768px") {
+        height: 180px;
+    }
+
+    .content-banner-inner {
+        position: absolute;
+        width: 1200px;
+        height: 40%;
+        transform: translateX(-50%);
+        left: 50%;
+        bottom: 0;
+        padding: 0 30px;
+
+        @media screen and (max-width: 1200px) {
+            width: 100%;
+        }
+
+        @media screen and (max-width: 768px) {
+            height: 45%;
+            width: 100%;
+        }
+
+        p {
+            margin: 0;
+            font-family: 'NanumSquare', sans-serif;                
+            color: white;
+        }
+
+        .content-banner-title {
+            font-weight: 700;
+            font-size: 5rem;
+
+            @media screen and (max-width: 768px) {
+                font-size: 2.2rem;
+            }
+        }
+
+        .content-banner-subtitle {
+            font-weight: 300;
+            font-size: 2rem;
+
+            @media screen and (max-width: 768px) {
+                font-size: 1rem;
+            }
+        }
+    }
 }

@@ -1,49 +1,50 @@
 import React, { Component } from 'react';
 import NavDropdownItem from './NavDropdownItem';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import * as headerActions from 'store/modules/header';
 import './NavDropdown.scss';
+
+
+const mapDispatchToProps = (dispatch) => ({
+    HeaderActions: bindActionCreators(headerActions, dispatch)
+});
 
 class NavDropdown extends Component {
 
-    onMouseEnter = (e) => {
-        const { name, handleMouseEnter } = this.props;
-        e.stopPropagation();
-        handleMouseEnter(name);
-    }
-
-    onMouseLeave = (e) => {
-        const { name, handleMouseLeave } = this.props;
-        e.stopPropagation();
-        handleMouseLeave(name);
+    handleOnClick = () => {
+        this.props.HeaderActions.setOnHeader(false);
     }
 
     renderDropdown = () => {
         const { items } = this.props;
         let id = 0;
         return items.map((item)=>(
-            <Link to={item.url} key={id++}>
+            <NavLink to={item.url} key={id++} activeStyle={{}}>
                 <NavDropdownItem
                     key={id++}
                     contentTitle={item.contentTitle}
                     content={item.content}
                 />
-            </Link>
+            </NavLink>
         ))
     }
 
     render() {
 
-        const { active } = this.props;
-        const { renderDropdown, onMouseEnter, onMouseLeave } = this;
-        return active ? (
-            <div id='nav-dropdown' onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave}>
+        const { renderDropdown, handleOnClick } = this;
+        const { onMouseLeave } = this.props;
+        return (
+            <div id='nav-dropdown' onMouseLeave={onMouseLeave} onClick={handleOnClick}>
                 {renderDropdown()}
             </div>
-        ) : (
-            <div></div>
-        );
+        )
         
     }
 }
 
-export default NavDropdown;
+export default connect(
+    null,
+    mapDispatchToProps
+)(NavDropdown);
