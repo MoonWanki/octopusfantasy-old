@@ -16,6 +16,8 @@ class HomeContainer extends Component {
         window.scrollTo(0, 0);
         this.props.HeaderActions.setOnTop(true);
         this.props.HeaderActions.setOnHeader(false);
+
+        document.querySelector("meta[name=theme-color]").setAttribute("content", "#252525");
     }
 
     render() {

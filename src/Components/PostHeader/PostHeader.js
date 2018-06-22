@@ -18,12 +18,14 @@ class PostHeader extends Component {
 
     render() {
 
-        const { title, postedOn } = this.props;
+        const { title, postedOn, type } = this.props;
         const { getStringDate } = this;
+
+        const str = `post-header-colorbox ${type}`;
 
         return (
             <div id='post-header'>
-                <div id='post-header-colorbox' />
+                <div className={str} />
                 <div id='post-header-title'>
                     <p bold='true'>{title}</p>
                 </div>

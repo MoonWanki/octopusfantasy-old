@@ -41,7 +41,7 @@ const Footer = () => {
                     <p className='footer-content'>dhksrl2589@gmail.com</p>
                 </div>
                 <div className="copyright">
-                    <p className='copyright-text'>Copyright ⓒ 2009-2018 Octopus Fantasy. All rights reserved.</p>
+                    <p className='copyright-text'>ⓒ 2009-2018 Octopus Fantasy. All rights reserved.</p>
                 </div>
             </div>
         </div>

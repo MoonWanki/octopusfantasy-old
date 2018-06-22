@@ -22,13 +22,13 @@ export default handleActions({
         if(state.active) {
             const newPost = {
                 id: payload.id,
-                type: payload.type,
                 title: payload.title,
+                type: payload.type,
                 postedOn: payload['posted-on'],
                 video: payload.video,
+                image: payload.image,
                 content: payload.content,
-                likes: payload.likes,
-                comments: payload.comments
+                likes: payload.likes
             };
             return { ...state, postList: [...state.postList, newPost] };
         } else return {...state};

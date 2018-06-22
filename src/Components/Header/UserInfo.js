@@ -3,7 +3,7 @@ import './UserInfo.scss';
 import { Link } from 'react-router-dom';
 import { withCookies } from 'react-cookie';
 import styled from 'styled-components';
-import { Button, Image, Confirm } from 'semantic-ui-react';
+import { Image, Confirm } from 'semantic-ui-react';
 
 const LoginButton = styled.div`
     

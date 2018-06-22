@@ -1,22 +1,37 @@
 .user-info-container {
-    float: right;
-    position: relative;
-    height: 30px;
-    padding-top: 12px;
+    position: absolute;
+    height: 100%;
+    right: 30px;
     text-align: center;
     cursor: pointer;
 
+    @media screen and (max-width: 768px) {
+        right: 20px;
+    }
+
     .user-info-profile-image {
+        position: relative;
         float: right;
+        top: 22%;
+
+        @media screen and (max-width: 768px) {
+            top: 50%;
+        }
+        
     }
     
     .user-info-nickname {
+        position: relative;
         float: right;
         font-family: 'NanumSquare';
         font-size: 1.2rem;
-        margin-top: 10px;
         margin-left: 4px;
+        transform: translateY(-50%);
+        top: 50%;
+        
+        @media screen and (max-width: 768px) {
+            display: none;
+        }
     }
-
 }
 

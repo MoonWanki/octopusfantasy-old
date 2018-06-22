@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import './ContentBanner.scss';
 import MusicBanner from '../../images/content_banner_music.jpg';
+import MrblogBanner from '../../images/content_banner_mrblog.jpg';
 import DaigassoBanner from '../../images/content_banner_daigasso.jpg';
 import GamevideoBanner from '../../images/content_banner_gamevideo.jpg';
-
+import EntertainmentBanner from '../../images/content_banner_entertainment.jpg';
 
 export default class ContentBanner extends Component {
 
@@ -17,7 +18,7 @@ export default class ContentBanner extends Component {
                 }
             case 'entertainment':
                 return {
-                    banner: GamevideoBanner,
+                    banner: EntertainmentBanner,
                     title: "Entertainments",
                     subtitle: "각종 UCC 영상 모음. 흑역사 다수 포함. 오글 주의."
                 }
@@ -25,17 +26,17 @@ export default class ContentBanner extends Component {
                 return {
                     banner: DaigassoBanner,
                     title: "Daigasso! DX",
-                    subtitle: "닌텐도 게임 《대합주! 밴드브라더스 DX》 작품 모음"
+                    subtitle: "닌텐도 소프트 《대합주! 밴드브라더스 DX》 작품 모음"
                 }
             case 'gamevideo':
                 return {
                     banner: GamevideoBanner,
                     title: "Game Videos",
-                    subtitle: "쓸데없이 고퀄로 편집한 게임 플레이 영상들"
+                    subtitle: "쓸데없이 정성껏 편집한 게임 플레이 영상들"
                 }
             case 'mrblog':
                 return {
-                    banner: GamevideoBanner,
+                    banner: MrblogBanner,
                     title: "Mr. Blog 시리즈",
                     subtitle: "Octopus Fantasy의 진미, Mr. 블로그씨와의 만담"
                 }

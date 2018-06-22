@@ -10,7 +10,10 @@ import { bindActionCreators } from 'redux';
 import * as headerActions from 'store/modules/header';
 
 
-const mapStateToProps = (state) => ({ transparency: state.header.transparency });
+const mapStateToProps = (state) => ({
+    transparency: state.header.transparency,
+    sidebar: state.header.sidebar
+});
 const mapDispatchToProps = (dispatch) => ({
     HeaderActions: bindActionCreators(headerActions, dispatch)
 });
@@ -27,9 +30,21 @@ class Header extends Component {
         this.props.HeaderActions.setOnHeader(false);  
     }
 
+    toggleSidebar = () => {
+        const { sidebar, HeaderActions } = this.props;
+
+        if(sidebar) {
+            HeaderActions.setSidebar(false);
+            HeaderActions.setOnHeader(false);
+        } else {
+            HeaderActions.setSidebar(true);
+            HeaderActions.setOnHeader(true);
+        }
+    }
+
     render() {
 
-        const { transparency, cookies } = this.props;
+        const { transparency, sidebar } = this.props;
 
         return (
             <div
@@ -37,10 +52,19 @@ class Header extends Component {
             onMouseEnter={this.handleMouseEnter}
             onMouseLeave={this.handleMouseLeave}>
                 <div className="header-inner">
+
+                    <div className={
+                        sidebar
+                        ? (transparency ? 'sidebar-button off-white' : 'sidebar-button off-black')
+                        : (transparency ? 'sidebar-button on-white' : 'sidebar-button on-black')
+                    } onClick={this.toggleSidebar} />
+
                     <Link to="/">
                         <img src={transparency?whiteLogo:blackLogo} alt="logo"/>
                     </Link>
+
                     <NavContainer transparency={transparency} />
+
                     <UserInfo transparency={transparency} />
                 </div>
             </div>

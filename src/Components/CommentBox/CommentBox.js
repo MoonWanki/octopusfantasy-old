@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Comment, Form, Button } from 'semantic-ui-react';
+import { Comment, Form } from 'semantic-ui-react';
 import { CommentGroup } from 'Components';
 import './CommentBox.scss';
 
@@ -25,17 +25,6 @@ class CommentBox extends Component {
         return date.toLocaleTimeString("ko-KR", options);
     }
 
-    renderRecomments = () => {
-
-        const { recomments } = this.props;
-        console.log('만들쟈');
-        let key = 0;
-        return recomments.map((curRecomment)=>(
-            <CommentGroup key={key++} comments={recomments} isParent={false} />
-        ));
-
-    }
-
     toggleReplyOnOff = (e) => {
         e.stopPropagation();
         this.setState({ replyOn: !this.state.replyOn});
@@ -44,7 +33,7 @@ class CommentBox extends Component {
     render() {
 
         const { id, commentedOn, comment, recomments } = this.props;
-        const { getStringDate, renderRecomments, toggleReplyOnOff } = this;
+        const { getStringDate, toggleReplyOnOff } = this;
         const { replyOn } = this.state;
 
         return (
@@ -59,7 +48,9 @@ class CommentBox extends Component {
                             <Comment.Action><span onClick={toggleReplyOnOff}>답글 달기</span></Comment.Action>
                         </Comment.Actions>
                     </Comment.Content>
-                    { recomments!=null && recomments.length>0 ? renderRecomments() : null }
+                    { recomments && recomments.length>0
+                        ? <CommentGroup comments={recomments} isParent={false} />
+                        : null }
                     { replyOn ?
                         (<div style={{paddingBottom: '40px'}}>
                             <Form>

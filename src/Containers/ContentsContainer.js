@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import { ContentBanner, PostList } from 'Components';
-import * as postUtil from 'util/post';
+import * as postUtil from 'util/http/post';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as postActions from 'store/modules/post';
 import $ from 'jquery';
 import { Loader } from 'semantic-ui-react';
 import { HeaderContainer } from 'Containers';
+import AppColor from 'AppColor';
 
 const mapStateToProps = (state) => ({
     postList: state.post.postList,
@@ -48,11 +49,13 @@ class ContentsContainer extends Component {
         }
         
         $(window).on('scroll.loading', () => {
-            if (this.isFetching===false && this.state.fullLoaded===false && $(document).height() - $(window).height() - $(window).scrollTop() < 100) {
+            if (this.isFetching===false && this.state.fullLoaded===false && $(document).height() - $(window).height() - $(window).scrollTop() < 150) {
                     this.isFetching = true;
                     this.fetchNextPost();
             }
         });
+
+        document.querySelector("meta[name=theme-color]").setAttribute("content", AppColor[this.state.contentType]);
         
     }
 
@@ -72,6 +75,8 @@ class ContentsContainer extends Component {
         if(this.nextPostNum < 0 && this.isFetching===false && this.state.fullLoaded===false) {
             this.fetchNextPost();
         }
+
+        document.querySelector("meta[name=theme-color]").setAttribute("content", AppColor[this.state.contentType]);
     }
 
     fetchNextPost = async () => {
@@ -85,7 +90,7 @@ class ContentsContainer extends Component {
         const { contentType } = this.state;
         
         /*------------------------------------------------------------------*/
-        const newPost = await postUtil.loadNextPost(contentType, this.nextPostNum);
+        const newPost = await postUtil.loadNextPost(contentType, this.nextPostNum, -1);
         /*------------------------------------------------------------------*/
         
         if(newPost.data.length > 0) { // 포스트 있음
@@ -122,16 +127,15 @@ class ContentsContainer extends Component {
             paddingTop: '85px',
             textAlign: 'center',
             color: 'gray',
-            background: '#f9f9f9'
         }
 
         return (
             <div>
                 <HeaderContainer />
                 <ContentBanner contentType={contentType} />
-                <PostList postList={postList} />
+                <PostList postList={postList} contentType={contentType}/>
                 <div style={loaderBoxStyle}>
-                    {fullLoaded?(<h3>여기가 끝이네요 ^ㅡ^</h3>):(<Loader active inline='centered' />)}
+                    {fullLoaded?(<h3>여기가 끝이네요 ^ㅡ^</h3>):(<Loader size='big' active inline='centered' />)}
                 </div>
                 
             </div>

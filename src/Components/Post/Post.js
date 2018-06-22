@@ -5,14 +5,14 @@ class Post extends Component {
 
     render() {
 
-        const { title, postedOn, video, content, likes, comments } = this.props;
+        const { id, title, postedOn, video, image, content, likes, type } = this.props;
 
         return (
 
             <div>
-                <PostHeader title={title} postedOn={postedOn} />
-                <PostContent video={video} content={content} />
-                <PostFooter likes={likes} comments={comments} />
+                <PostHeader title={title} postedOn={postedOn} type={type}/>
+                <PostContent video={video} image={image} content={content} />
+                <PostFooter likes={likes} id={id} type={type} />
             </div>
         );
     }

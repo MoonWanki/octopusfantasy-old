@@ -99,11 +99,7 @@ class SlickSlider extends Component {
 						</div>
 						
 					</Slider>
-					{/* <div id="slider-dots-container">
-						<button className='slider-dots' onClick={slickGoTo(1)}>1</button>
-						<button className='slider-dots'>2</button>
-						<button className='slider-dots'>3</button>						
-					</div> */}
+
 				</div>
 
 			</div>

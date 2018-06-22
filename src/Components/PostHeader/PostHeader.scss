@@ -1,12 +1,13 @@
+@import "../../AppColor";
+
 #post-header {
     width: 100%;
     padding: 20px 0;
 
-    #post-header-colorbox {
+    .post-header-colorbox {
         width: 60px;
         height: 8px;
         margin: 10px 0;
-        background: #0288D1;
 
         @media screen and (max-width: 768px) {
             width: 45px;
@@ -14,6 +15,16 @@
             margin: 8px 0;
         }
     }
+
+    .music { background: $music; }
+
+    .entertainment { background: $entertainment; }
+
+    .daigasso { background: $daigasso; }
+
+    .gamevideo { background: $gamevideo; }
+
+    .mrblog { background: $mrblog; }
 
     #post-header-title {
         width: 100%;
