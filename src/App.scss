@@ -1,14 +1,13 @@
-@import url(https://fonts.googleapis.com/earlyaccess/nanumgothic.css);
-@import url(https://cdn.rawgit.com/moonspam/NanumSquare/master/nanumsquare.css);
-// { font-family: 'NanumSquare', sans-serif; }
-// { font-weight: Regular(400), Bold(700), Extra Bold(800), Light(300) }
-
-
-* {
-    font-family: 'Nanum Gothic', 돋움;
-    box-sizing: border-box;
+.sidebar-button {
+    visibility: hidden;
+    position: fixed;
+    left: 20px;
+    width: 36px;
+    height: 36px;
+    background: url(images/menu_button.svg) center no-repeat;
+    z-index: 200;
+    @media screen and (max-width: 768px) {
+            visibility: visible;
+    }
 }
 
-*:focus {
-    outline: none;
-}

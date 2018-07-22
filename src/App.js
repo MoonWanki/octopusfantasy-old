@@ -2,37 +2,35 @@ import React, { Component, Fragment } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import 'App.scss';
+import { CookiesProvider } from 'react-cookie';
 import store from 'store';
 
-import { HomeContainer, ContentsContainer } from 'Containers';
-import { Login, About, NaverLoginCallback, KakaoLoginCallback, Sidebar } from 'Components';
+import { HomeContainer, ContentsContainer, SinglePostContainer } from 'Containers';
+import { Login, About, NaverLoginCallback, KakaoLoginCallback, Main } from 'Components';
 
 class App extends Component {
 
-  componentDidMount() {
-    console.log("App Mounted");
-  }
-
   render() {
-    console.log('App rendered');
+    console.log('app rendered');
     return (
+      <CookiesProvider>
+
       <Provider store={store}>
-        <Fragment>
-          <BrowserRouter>
-            <Fragment>
-              <Sidebar />
-              <Switch>
-                <Route exact path="/" component={HomeContainer} />
-                <Route path="/about" component={About} />
-                <Route path="/login" component={Login} />
-                <Route path="/naverlogincallback" component={NaverLoginCallback} />
-                <Route path="/kakaologincallback" component={KakaoLoginCallback} />
-                <Route path="/:contenttype" component={ContentsContainer} />
-              </Switch>
-            </Fragment>     
-          </BrowserRouter>
-        </Fragment>
+        <BrowserRouter>
+            {/* <Sidebar /> */}
+            <Switch>
+              <Route path="/login" component={Login} />
+              <Route path="/" component={Main} />
+              {/* <Route exact path="/" component={HomeContainer} />
+              <Route path="/about" component={About} />
+              <Route path="/naverlogincallback" component={NaverLoginCallback} />
+              <Route path="/kakaologincallback" component={KakaoLoginCallback} />
+              <Route path="/post/:pid" component={SinglePostContainer} />                
+              <Route path="/:contenttype" component={ContentsContainer} /> */}
+            </Switch>
+        </BrowserRouter>
       </Provider>
+      </CookiesProvider>
     );
   }
 }

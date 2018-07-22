@@ -12,7 +12,6 @@ class About extends Component {
     render() {
         return (
             <Fragment>
-                <HeaderContainer />
                 <div className='about-page-wrapper'>
                     <p className='about-page-inner'>페이지 준비중입니다.</p>
                 </div>

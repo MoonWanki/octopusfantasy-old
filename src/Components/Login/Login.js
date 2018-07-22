@@ -3,7 +3,7 @@ import { Link, Redirect } from 'react-router-dom';
 import './Login.scss';
 import { withCookies } from 'react-cookie';
 import naver from 'util/api/naver';
-import kakao from 'util/api/kakao'
+import kakao from 'util/api/kakao';
 
 const naverAuthUrl = 'https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id='+ naver.client_id
 + '&redirect_uri=' + naver.redirectURI
@@ -24,14 +24,14 @@ class Login extends Component {
                 { this.props.cookies.get('userdata') ? <Redirect to='/' /> : (
                     <div className='login-page-inner'>
                         <Link to='/'>
-                            <div className='home-button' />
+                            <div className='home-button' ref='homeButton'/>
                         </Link>
                         <div className='login-button-container'>
                             <a href={naverAuthUrl}>
-                                <div className='naver-login-button' />
+                                <div className='naver-login-button' ref='naverLoginButton'/>
                             </a>
                             <a href={kakaoAuthUrl}>
-                                <div className='kakao-login-button' />
+                                <div className='kakao-login-button' ref='kakaoLoginButton'/>
                             </a>
                         </div>
                     </div>

@@ -34,7 +34,7 @@ class NavItem extends Component {
         return (
             <div
                 id="nav-item-container"
-                style={{ backgroundColor: (active ? '#f9f9f9' : 'inherit') }}>
+                style={{ backgroundColor: (active ? '#f4f4f4' : 'inherit') }}>
                 <div id="nav-item" onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave}>
                     <Bold routed={routed} transparency={transparency}>{name}</Bold>
                 </div>

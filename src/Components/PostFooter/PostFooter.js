@@ -17,8 +17,8 @@ class PostFooter extends Component {
     }
 
     loadComments = async (id) => {
-        const loadedComments = await CommentUtil.loadComments();
-        this.setState({ comments: loadedComments });
+        const res = await CommentUtil.loadComments(id);
+        this.setState({ comments: res.data });
     }
 
     render() {
@@ -27,8 +27,7 @@ class PostFooter extends Component {
 
         return (
             <div style={{paddingBottom: '100px'}}>
-
-                <CommentGroup comments={this.state.comments} isParent={true}/>
+                {/* <CommentGroup comments={this.state.comments} isParent={true}/> */}
             </div>
         );
     }

@@ -1,4 +1,3 @@
-
 .wanna-play {
     text-align: center;
     padding: 100px 0 8px 0;
@@ -8,7 +7,7 @@
     margin: 0;
 
     @media screen and (max-width: 768px) {
-        padding: 30px 0 4px 0;
+        padding: 40px 0 4px 0;
         font-size: 1.5rem;
     }
 
@@ -167,26 +166,27 @@
         background-size: 100%;
         text-align: center;
         margin: 0;
+        display: table;
 
         filter: grayscale(100%);
         transition: 0.3s ease;
 
+        @media screen and (min-width: 769px) {
+            &:hover {
+                filter: grayscale(0%);
+                padding: 0 30px;
+                background-size: 103%;
+            }        }
 
-        &:hover {
-            filter: grayscale(0%);
-            padding: 0 30px;
-            background-size: 103%;
-        }
 
         .who-are-you {
-            position: relative;    
-            transform: translateY(-50%);
-            top: 50%;
             text-align: center;
             font-family: 'NanumSquare', sans-serif;
             font-size: 3.5rem;
             font-weight: 700;        
             color: white;
+            display: table-cell;
+            vertical-align: middle;
     
             @media screen and (max-width: 768px) {
                 font-size: 1.6rem;

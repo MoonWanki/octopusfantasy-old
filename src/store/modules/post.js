@@ -15,7 +15,6 @@ export const setActive = createAction(SET_ACTIVE);
 
 export default handleActions({
     [INIT_POSTS]: (state) => {
-        console.log("포스트 제거!");
         return { ...state, postList: [] };
     },
     [FETCH_POST]: (state, { payload }) => {

@@ -23,9 +23,5 @@
 import axios from 'axios';
 
 export const loadComments = (pid) => {
-    return axios.get(`https://server.octopusfantasy.com/post/comment`, {
-        params: {
-            pid: pid
-        }
-    });
+    return axios.get(`https://server.octopusfantasy.com/comment?pid=${pid}`);
 }

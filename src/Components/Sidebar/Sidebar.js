@@ -1,56 +1,48 @@
 import React, { Component } from 'react';
-import './Sidebar.scss';
+import { SideNav, SideNavItem } from 'react-materialize'
 import { Link } from 'react-router-dom';
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
-import * as headerActions from 'store/modules/header';
-
-const mapStateToProps = (state) => ({
-    sidebar: state.header.sidebar
-});
-
-const mapDispatchToProps = (dispatch) => ({
-    HeaderActions: bindActionCreators(headerActions, dispatch)
-});
+import { withCookies } from 'react-cookie';
+import { Image } from 'semantic-ui-react';
 
 class Sidebar extends Component {
 
-    closeSidebar = () => {
-        this.props.HeaderActions.setSidebar(false);
-    }
     render() {
 
+        const { cookies } = this.props;
         return (
-            <div className={ this.props.sidebar ? 'sidebar-container on' : 'sidebar-container' }>
+            <SideNav
+            trigger={<div className='sidebar-button' />}
+            options={{ closeOnClick: true }} >
+                <SideNavItem waves icon='power_settings_new'>
+                    {cookies.get('userdata')
+                        ?
+                        <div>
+                            {cookies.get('userdata')["nickname"]}
+                            <Image avatar src={cookies.get('userdata')["profileImage"]} />
+                        </div>
+                        :
+                        <Link to='/login'>
+                        로그인
+                        </Link>
+                    }
+                </SideNavItem>    
                 <Link to='/music'>
-                    <div className='sidebar-item' onClick={this.closeSidebar}>
-                        MusicWorks
-                    </div>
-                </Link>
+                    <SideNavItem waves>Music Works</SideNavItem></Link>
                 <Link to='/entertainment'>
-                    <div className='sidebar-item' onClick={this.closeSidebar}>
-                        Entertainments
-                    </div>
+                    <SideNavItem waves>Entertainments</SideNavItem>
                 </Link>
                 <Link to='/daigasso'>
-                    <div className='sidebar-item' onClick={this.closeSidebar}>
-                        Daigasso! DX
-                    </div>
+                    <SideNavItem waves>Daigasso! DX</SideNavItem>
                 </Link>
                 <Link to='/gamevideo'>
-                    <div className='sidebar-item' onClick={this.closeSidebar}>
-                        Game Videos
-                    </div>
+                    <SideNavItem waves>Game Videos</SideNavItem>
                 </Link>
                 <Link to='/mrblog'>
-                    <div className='sidebar-item' onClick={this.closeSidebar}>
-                        Mr. Blog
-                    </div>
+                    <SideNavItem waves>Mr. Blog</SideNavItem>
                 </Link>
-
-            </div>
+            </SideNav>
         );
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Sidebar);
+export default withCookies(Sidebar);

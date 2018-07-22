@@ -12,7 +12,7 @@ class CommentGroup extends Component {
         return comments.map((curComment)=>(
             <CommentBox
                 key={key++}
-                id={curComment.id}
+                id={curComment.uid}
                 comment={curComment.comment}
                 commentedOn={curComment['commented-on']}
                 recomments={isParent ? curComment.recomments : null}

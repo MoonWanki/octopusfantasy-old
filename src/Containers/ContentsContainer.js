@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { ContentBanner, PostList } from 'Components';
 import * as postUtil from 'util/http/post';
 import { connect } from 'react-redux';
@@ -49,7 +49,7 @@ class ContentsContainer extends Component {
         }
         
         $(window).on('scroll.loading', () => {
-            if (this.isFetching===false && this.state.fullLoaded===false && $(document).height() - $(window).height() - $(window).scrollTop() < 150) {
+            if (this.isFetching===false && this.state.fullLoaded===false && $(document).height() - $(window).height() - $(window).scrollTop() < 200) {
                     this.isFetching = true;
                     this.fetchNextPost();
             }
@@ -122,23 +122,16 @@ class ContentsContainer extends Component {
         const { postList } = this.props;
         const { contentType, fullLoaded } = this.state;
 
-        const loaderBoxStyle = {
-            height: '200px',
-            paddingTop: '85px',
-            textAlign: 'center',
-            color: 'gray',
-        }
-
         return (
-            <div>
+            <Fragment>
                 <HeaderContainer />
                 <ContentBanner contentType={contentType} />
                 <PostList postList={postList} contentType={contentType}/>
-                <div style={loaderBoxStyle}>
+                <div style={{height: '200px', paddingTop: '50px', textAlign: 'center', color: 'gray'}}>
                     {fullLoaded?(<h3>여기가 끝이네요 ^ㅡ^</h3>):(<Loader size='big' active inline='centered' />)}
                 </div>
                 
-            </div>
+            </Fragment>
         );
     }
 }

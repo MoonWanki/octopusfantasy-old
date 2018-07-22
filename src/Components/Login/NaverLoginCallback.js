@@ -30,7 +30,7 @@ class NaverLoginCallback extends Component {
             nickname: data.response.nickname,
             profileImage: data.response.profile_image
         }
-        cookies.set('userdata', userdata, {expires: date});
+        cookies.set('userdata', userdata, { path: '/', expires: date, domain: '.octopusfantasy.com' });
     }
 
     getAccessToken = async () => {

@@ -41,7 +41,7 @@ class UserInfo extends Component {
     closeDialog = () => this.setState({ logoutDialog: false });
 
     handleLogout = () => {
-        this.props.cookies.remove('userdata');
+        this.props.cookies.remove('userdata', { path: '/' });
         window.location.reload();
     }
     

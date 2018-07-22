@@ -1,0 +1,71 @@
+.header-top-container {
+    width: 100%;
+    height: 40px;
+    background: white;
+}
+
+.header-top-inner {
+    position: relative;
+    width: 1200px;
+    height: 100%;
+    transform: translateX(-50%);
+    left: 50%;
+    padding: 0 30px;
+
+
+}
+
+@media screen and (max-width: 1200px) {
+    .header-top-inner {
+        width: 100%;
+    }
+}
+
+.logo-octopusfantasy {
+    width: 90px;
+    height: 100%;
+    float: left;
+    background: url(https://i.imgur.com/ongQC9S.png) center no-repeat;
+    background-size: contain;
+    -webkit-filter: grayscale(100%);
+    filter: grayscale(100%);
+    opacity: .8;
+}
+.logo-octopusfantasy:hover {
+    opacity: 1;
+}
+
+.login-box {
+    float: right;
+    height: 100%;
+}
+.login-button {
+    position: relative;
+    width: 56px;
+    height: 22px;
+    transform: translateY(-50%);
+    top: 50%;
+    border: 1px solid #AAAAA4;
+    text-align: center;
+    color: #757575;
+    font-size: 0.8rem;
+}
+
+.login-button:hover {
+    background: #FAFAF8;
+}
+
+@media screen and (max-width: 768px) {
+    .header-top-container {
+        height: 26px;
+    }
+    .logo-octopusfantasy {
+        width: 70px;
+    }
+    .login-button {
+        border: none;
+    }
+    .header-top-inner {
+        padding: 0 20px;
+    }
+}

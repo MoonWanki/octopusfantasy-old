@@ -33,7 +33,7 @@ class KakaoLoginCallback extends Component {
             profileImage: data.properties.thumbnail_image
         }
 
-        cookies.set('userdata', userdata, {expires: date});
+        cookies.set('userdata', userdata, { expires: date, path: '/', domain: '.octopusfantasy.com' });
     }
 
     getAccessToken = async () => {

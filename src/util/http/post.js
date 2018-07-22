@@ -8,3 +8,7 @@ export function loadNextPost(type, skip, sort) {
         }
     });
 }
+
+export const loadSinglePost = (pid) => {
+    return axios.get(`https://server.octopusfantasy.com/post/${pid}`)
+}

@@ -37,9 +37,9 @@ class CommentBox extends Component {
         const { replyOn } = this.state;
 
         return (
-            <div id='comment-box'> 
+            <div className='comment-box'> 
                 <Comment>
-                    <Comment.Avatar src='/assets/images/avatar/small/jenny.jpg' />
+                    <Comment.Avatar src='https://phinf.pstatic.net/contact/profile/blog/75/4/dhksrl2589.jpg?type=s160' />
                     <Comment.Content>
                         <Comment.Author as='b'>{id}</Comment.Author>
                         <Comment.Metadata>{getStringDate(commentedOn)}</Comment.Metadata>

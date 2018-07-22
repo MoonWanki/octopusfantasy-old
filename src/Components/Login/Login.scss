@@ -1,10 +1,10 @@
 @mixin fade-in-mix {
     opacity: 0;
-    animation: fade-in 0.5s cubic-bezier(0, 0.7, 0.3, 1) forwards;
+    animation: fade-in 0.8s cubic-bezier(0.6, 0.2, 0.1, 1) forwards;
 }
 
 @keyframes fade-in {
-    from {top: 60px;}
+    from {top: 40px;}
     to {opacity: 1; top: 0px;}
 }
 
@@ -40,7 +40,6 @@
 
     // border-radius: 4px;
     animation: box-show 0.5s ease-out forwards;
-    animation-delay: 0.1s;
 
     .home-button {
         position: relative;
@@ -50,7 +49,7 @@
         background: url(../../images/logo_white.png) center no-repeat;
 
         @include fade-in-mix();
-        animation-delay: 0.2s;
+        animation-delay: 0.1s;
     }
 
     .login-button-container {
@@ -69,7 +68,7 @@
         background-size: contain;
 
         @include fade-in-mix();
-        animation-delay: 0.3s;
+        animation-delay: 0.2s;
 
         &:hover {
             background-image: url(../../images/naverlogin_hover.png);
@@ -85,7 +84,7 @@
         background-size: contain;
 
         @include fade-in-mix();
-        animation-delay: 0.35s;
+        animation-delay: 0.25s;
 
         &:hover {
             background-image: url(../../images/kakaologin_hover.png);

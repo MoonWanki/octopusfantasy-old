@@ -1,7 +1,20 @@
+
+@import url(https://fonts.googleapis.com/earlyaccess/nanumgothic.css);
+@import url(https://cdn.rawgit.com/moonspam/NanumSquare/master/nanumsquare.css);
+@import url(https://fonts.googleapis.com/earlyaccess/nanummyeongjo.css);
+
 body {
   height: 100%;
   width: 100%;
   margin: 0;
   padding: 0;
-  font-family: sans-serif;
+}
+
+* {
+    font-family: 'Nanum Gothic', 돋움;
+    box-sizing: border-box;
+}
+
+*:focus {
+    outline: none;
 }
