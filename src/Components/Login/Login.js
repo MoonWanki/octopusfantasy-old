@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import './Login.scss';
-import { withCookies } from 'react-cookie';
+import cookie from 'react-cookies';
 import naver from 'util/api/naver';
 import kakao from 'util/api/kakao';
 
@@ -21,7 +21,7 @@ class Login extends Component {
 
         return (
             <div className='login-page-wrapper'>
-                { this.props.cookies.get('userdata') ? <Redirect to='/' /> : (
+                { cookie.load('userdata') ? <Redirect to='/' /> : (
                     <div className='login-page-inner'>
                         <Link to='/'>
                             <div className='home-button' ref='homeButton'/>
@@ -41,4 +41,4 @@ class Login extends Component {
     }
 }
 
-export default withCookies(Login);
+export default Login;

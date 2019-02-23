@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { Dimmer, Loader } from 'semantic-ui-react';
 import { Redirect } from 'react-router-dom';
-import { withCookies } from 'react-cookie';
+import cookie from 'react-cookies';
 
 class NaverLoginCallback extends Component {
 
@@ -30,7 +30,7 @@ class NaverLoginCallback extends Component {
             nickname: data.response.nickname,
             profileImage: data.response.profile_image
         }
-        cookies.set('userdata', userdata, { path: '/', expires: date, domain: '.octopusfantasy.com' });
+        cookie.save('userdata', userdata, { path: '/', expires: date, domain: '.octopusfantasy.com' });
     }
 
     getAccessToken = async () => {
@@ -71,4 +71,4 @@ class NaverLoginCallback extends Component {
     }
 }
 
-export default withCookies(NaverLoginCallback);
+export default NaverLoginCallback;

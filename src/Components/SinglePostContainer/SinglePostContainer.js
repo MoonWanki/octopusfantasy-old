@@ -1,8 +1,8 @@
 import React, { Component, Fragment } from 'react';
 import * as PostUtil from 'util/http/post';
 import { Post, ContentBanner, Footer } from 'Components';
-import { HeaderContainer } from 'Containers';
 import { Loader } from 'semantic-ui-react';
+import { Helmet } from 'react-helmet';
 
 class SinglePostContainer extends Component {
 
@@ -30,21 +30,26 @@ class SinglePostContainer extends Component {
 
         return (
             <Fragment>
-                <HeaderContainer />
-                <ContentBanner contentType={'music'} />
+
+                <ContentBanner postType={'music'} />
                 {post!=null ?
-                <div className='post-list'>
-                    <Post
-                        id={post.id}
-                        title={post.title}
-                        postedOn={post['posted-on']}
-                        video={post.video}
-                        image={post.image}
-                        content={post.content}
-                        likes={post.likes}
-                        type={post.type}
-                    />
-                </div>
+                <Fragment>
+                    <Helmet>
+                        <title>{post['title']} - Octopus Fantasy</title>
+                    </Helmet>
+                    <div className='post-list'>
+                        <Post
+                            type={post["type"]}
+                            id={post["id"]}
+                            title={post["title"]}
+                            postedOn={post["posted-on"]}
+                            video={post["video"]}
+                            image={post["image"]}
+                            content={post["content"]}
+                            likes={post["likes"]}
+                        />
+                    </div>
+                </Fragment>
                 :
                 <div style={{minHeight: '60vh', paddingTop: '100px', textAlign: 'center', color: 'gray'}}>
                     <Loader size='big' active inline='centered' />

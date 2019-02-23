@@ -1,13 +1,129 @@
-.header-container {
-    width: 100%;
-    
+$header-height: 64px;
+$header-height-mobile: 40px;
+
+@mixin header {
+    background: white;
+    border-bottom-color: #eaeaea;
+
     .header-inner {
-        width: 1200px;
-        height: 64px;
+        .header-logo {
+            background-image: url(../../images/logo_black.png);
+        }
+        .header-nav-item {
+            color: #757575;
+        }
     }
 }
 
+@mixin header-transparent {
+    background: transparent;
+    border-bottom-color: transparent;
 
-.header-container:hover {
+    .header-inner {
+        .header-logo {
+            background-image: url(../../images/logo_white.png);
+        }
+        .header-nav-item {
+            color: white;
+        }
+    }
+}
+
+.header-container {
+    position: fixed;
+    width: 100%;
+    height: $header-height;
+    z-index: 100;
+    border-bottom: 1px solid;
+    
+    .header-inner {
+        width: 1200px;
+        margin: auto;
+
+        .header-logo {
+            float: left;
+            width: 180px;
+            height: 55px;
+            margin: 4px 30px;
+            background: center no-repeat;
+            background-size: contain;
+        }
+
+        .header-nav-item {
+            float: left;
+            width: 95px;
+            padding: 21px;
+            height: $header-height;
+
+            .header-nav-item-text {
+                margin: 0;
+                height: 1.3em;
+                text-align: center;
+                font-size: 1.1em;
+                font-weight: 800;
+            }
+            &:hover {
+                background: #f0f0f0;
+            }
+        }
+
+        .header-nav-item-products {
+            width: 122px;
+
+            .header-dropdown {
+                position: absolute;
+                left: 0px;
+                top: -100%;
+                width: 100vw;
+                height: 400px;
+                background: white;
+            }
+            &:hover {
+                .header-dropdown {
+                    top: $header-height;
+                    display: block;
+                }
+            }
+        }
  
+        @media screen and (max-width: 1200px) {
+            width: 100%;
+        }
+    }
+
+    .header-dropdown {
+        display: none;
+    }
+
+    @include header;
+}
+
+.header-transparent {
+    @include header-transparent;
+
+    &:hover {
+        @include header;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .header-container {
+        height: $header-height-mobile;
+
+        .header-inner {
+            .header-logo {
+                position: relative;
+                width: 108px;
+                height: 33px;
+                margin: 3px;
+                transform: translateX(-50%);
+                left: 50%;
+            }
+            .header-nav-item {
+                display: none;
+            }
+        }
+
+        @include header;
+    }
 }

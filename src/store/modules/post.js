@@ -1,39 +1,35 @@
 import { createAction, handleActions } from 'redux-actions';
 
 const initialState = {
-    active: false,
+    fetched: false,
     postList: []
 };
 
-const INIT_POSTS = 'contents/INIT_POSTS';
-const FETCH_POST = 'contents/FETCH_POST';
-const SET_ACTIVE = 'contents/SET_ACTIVE';
+const FETCH_POSTS = 'contents/FETCH_POSTS';
 
-export const initPosts = createAction(INIT_POSTS);
-export const fetchPost = createAction(FETCH_POST);
-export const setActive = createAction(SET_ACTIVE);
+export const fetchPosts = createAction(FETCH_POSTS);
 
 export default handleActions({
-    [INIT_POSTS]: (state) => {
-        return { ...state, postList: [] };
+    [FETCH_POSTS]: (state, { payload }) => {
+        return {
+            fetched: true,
+            postList: payload
+        };
     },
-    [FETCH_POST]: (state, { payload }) => {
-        if(state.active) {
-            const newPost = {
-                id: payload.id,
-                title: payload.title,
-                type: payload.type,
-                postedOn: payload['posted-on'],
-                video: payload.video,
-                image: payload.image,
-                content: payload.content,
-                likes: payload.likes
-            };
-            return { ...state, postList: [...state.postList, newPost] };
-        } else return {...state};
-    },
-    [SET_ACTIVE]: (state, { payload }) => {
-        return { ...state, active: payload };
-    }
+    // [FETCH_POST]: (state, { payload }) => {
+    //     if(state.active) {
+    //         const newPost = {
+    //             id: payload.id,
+    //             title: payload.title,
+    //             type: payload.type,
+    //             postedOn: payload['posted-on'],
+    //             video: payload.video,
+    //             image: payload.image,
+    //             content: payload.content,
+    //             likes: payload.likes
+    //         };
+    //         return { ...state, postList: [...state.postList, newPost] };
+    //     } else return {...state};
+    // },
 }, initialState);
 

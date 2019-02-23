@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './UserInfo.scss';
 import { Link } from 'react-router-dom';
-import { withCookies } from 'react-cookie';
+import cookie from 'react-cookies';
 import styled from 'styled-components';
 import { Image, Confirm } from 'semantic-ui-react';
 
@@ -41,7 +41,7 @@ class UserInfo extends Component {
     closeDialog = () => this.setState({ logoutDialog: false });
 
     handleLogout = () => {
-        this.props.cookies.remove('userdata', { path: '/' });
+        cookie.remove('userdata', { path: '/' });
         window.location.reload();
     }
     
@@ -52,14 +52,14 @@ class UserInfo extends Component {
 
         return (
             <div>
-                {cookies.get('userdata')
+                {cookie.load('userdata')
                 ?
                     <div className='user-info-container' onClick={openDialog}>
                         <span className='user-info-nickname' style={transparency ? {color: 'white'} : {color: 'black'}}>
-                            {cookies.get('userdata')["nickname"]}
+                            {cookie.load('userdata')["nickname"]}
                         </span>
                         <div className='user-info-profile-image'>
-                            <Image avatar src={cookies.get('userdata')["profileImage"]} />
+                            <Image avatar src={cookie.load('userdata')["profileImage"]} />
                         </div>
                         <Confirm
                             size='tiny'
@@ -78,4 +78,4 @@ class UserInfo extends Component {
     }
 }
 
-export default withCookies(UserInfo);
+export default UserInfo;

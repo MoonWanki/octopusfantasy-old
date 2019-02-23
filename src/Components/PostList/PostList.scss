@@ -3,9 +3,8 @@
 .post-list {
     position: relative;
     width: 1200px;
-    left: 50%;
     padding: 40px 30px;
-    transform: translateX(-50%);
+    margin: auto;
 
     @include media("<1200px") {
         width: 100%;

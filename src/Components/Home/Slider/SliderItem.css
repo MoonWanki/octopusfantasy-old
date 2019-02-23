@@ -6,7 +6,9 @@
     left: 0;
     opacity: 0;
     transition: 0.5s ease-in-out;
-    background: center no-repeat;
+    background-color: gray;
+    background-position: center;
+    background-repeat: no-repeat;
     background-size: cover;
 }
 
@@ -18,7 +20,7 @@
     position: relative;
     top: 40%;
     color: white;
-    font-size: 5rem;
+    font-size: 4.5rem;
     font-weight: 700;
     text-align: center;
 }
@@ -27,7 +29,7 @@
     position: relative;
     top: 32%;
     color: white;
-    font-size: 2rem;
+    font-size: 1.8rem;
     text-align: center;
 }
 

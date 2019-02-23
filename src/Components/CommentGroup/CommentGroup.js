@@ -1,40 +1,35 @@
-import React, { Component } from 'react';
-import { CommentBox } from 'Components';
-import { Comment, Button, Form } from 'semantic-ui-react';
+import React, { Component, Fragment } from 'react';
+import { Comment } from 'Components';
+import { Input } from 'react-materialize';
+import { Button } from 'semantic-ui-react';
+import './CommentGroup.scss';
 
 class CommentGroup extends Component {
 
-    renderCommentBoxs = () => {
-
-        const { isParent, comments } = this.props;
-        let key = 0;
-
-        return comments.map((curComment)=>(
-            <CommentBox
-                key={key++}
-                id={curComment.uid}
-                comment={curComment.comment}
-                commentedOn={curComment['commented-on']}
-                recomments={isParent ? curComment.recomments : null}
-             />
-        ))
+    constructor(props) {
+        super(props);
+        this.state = {
+            recommentTextareaOn: false
+        }
     }
 
     render() {
-        const { isParent } = this.props;
-        const { renderCommentBoxs } = this;
+        const { data } = this.props;
+        const { recommentTextareaOn } = this.state;
         return (
             <div>
-                <Comment.Group threaded={isParent} >
-                    {renderCommentBoxs()}
-                </Comment.Group>
-                {isParent ? (
-                    <Form>
-                        <Form.TextArea placeholder='덧글을 입력해주세요.'/>
-                        <Button color='teal' content='등록' floated='right' labelPosition='right' icon='edit' />
-                    </Form>
-                ):null}
-
+                <Comment nickname={data["nickname"]} profileImage={data["profile-image"]} commentedOn={data["commented-on"]} text={data["comment"]} />
+                <div className="recomments-container">
+                    {data["recomments"].map(data =>
+                        <Comment nickname={data["nickname"]} profileImage={data["profile-image"]} commentedOn={data["recommented-on"]} text={data["recomment"]} />
+                    )}
+                    { recommentTextareaOn ?
+                        <Fragment>
+                            <Input type='textarea' placeholder='답글을 입력해 주세요.'/>
+                            <Button basic loading floated='right'>등록</Button>
+                        </Fragment>
+                    : null }
+                </div>
             </div>
         );
     }

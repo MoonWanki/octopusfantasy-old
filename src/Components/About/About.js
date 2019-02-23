@@ -1,6 +1,5 @@
 import React, { Component, Fragment } from 'react';
 import { Footer } from 'Components';
-import { HeaderContainer } from 'Containers';
 import './About.scss';
 
 class About extends Component {

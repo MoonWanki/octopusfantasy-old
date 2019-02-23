@@ -8,8 +8,8 @@ import EntertainmentBanner from '../../images/content_banner_entertainment.jpg';
 
 export default class ContentBanner extends Component {
 
-    resolve = (contentType) => {
-        switch(contentType) {
+    resolve = (postType) => {
+        switch(postType) {
             case 'music':
                 return {
                     banner: MusicBanner,
@@ -47,8 +47,8 @@ export default class ContentBanner extends Component {
 
     render() {
 
-        const { contentType } = this.props;
-        const { banner, title, subtitle } = this.resolve(contentType);
+        const { postType } = this.props;
+        const { banner, title, subtitle } = this.resolve(postType);
 
         return (
             <div className='content-banner-container' style={{ backgroundImage: `url(${banner})` }}>

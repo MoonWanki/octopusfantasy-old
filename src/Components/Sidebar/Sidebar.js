@@ -8,10 +8,10 @@ class Sidebar extends Component {
 
     render() {
 
-        const { cookies } = this.props;
+        const { cookies, topVisible } = this.props;
         return (
             <SideNav
-            trigger={<div className='sidebar-button' />}
+            trigger={<div className={topVisible ? 'sidebar-button white' : 'sidebar-button'} />}
             options={{ closeOnClick: true }} >
                 <SideNavItem waves icon='power_settings_new'>
                     {cookies.get('userdata')

@@ -1,0 +1,42 @@
+.post-menu-container {
+
+    width: 100%;
+    padding: 40px 0 60px;
+
+    .num-of-comments {
+        float: left;
+        font-family: 'NanumSquare';
+        font-size: 1.3rem;
+        font-weight: 700;
+        padding-top: 8px;
+    }
+
+    .post-menu-buttons-container {
+        float: right;
+
+        .post-menu-button {
+            height: 30px;
+            float: left;
+            border: 1px solid lightgray;
+    
+            &:hover {
+                border-color: gray;
+            }
+        }
+    
+        .like-button {
+            width: 64px;
+            padding: 4px 14px;
+        }
+    
+        .share-button {
+            width: 40px;
+            padding: 4px 10px;
+            margin-left: 12px;
+        }
+    }
+
+    @media screen and (max-width: 768px) {
+        padding-top: 20px;
+    }
+}

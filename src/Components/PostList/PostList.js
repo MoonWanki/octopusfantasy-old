@@ -12,14 +12,14 @@ class PostList extends Component {
         return postList.map((post)=>(
             <Post
                 key={key++}
-                id={post.id}
-                title={post.title}
-                postedOn={post.postedOn}
-                video={post.video}
-                image={post.image}
-                content={post.content}
-                likes={post.likes}
-                type={post.type}
+                type={post["type"]}
+                id={post["id"]}
+                title={post["title"]}
+                postedOn={post["posted-on"]}
+                video={post["video"]}
+                image={post["image"]}
+                content={post["content"]}
+                likes={post["likes"]}
             />
         ))
     }

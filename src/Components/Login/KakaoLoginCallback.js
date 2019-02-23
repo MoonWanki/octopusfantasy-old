@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { Redirect } from 'react-router-dom';
-import { withCookies } from 'react-cookie';
+import cookie from 'react-cookies';
 import { Dimmer, Loader } from 'semantic-ui-react';
 import kakao from 'util/api/kakao';
 import * as qs from 'qs';
@@ -33,7 +33,7 @@ class KakaoLoginCallback extends Component {
             profileImage: data.properties.thumbnail_image
         }
 
-        cookies.set('userdata', userdata, { expires: date, path: '/', domain: '.octopusfantasy.com' });
+        cookie.save('userdata', userdata, { expires: date, path: '/', domain: '.octopusfantasy.com' });
     }
 
     getAccessToken = async () => {
@@ -76,4 +76,4 @@ class KakaoLoginCallback extends Component {
     }
 }
 
-export default withCookies(KakaoLoginCallback);
+export default KakaoLoginCallback;
